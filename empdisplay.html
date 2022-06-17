@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body style=" background-image: url();color:black">
+    <center><h1><u>EMPLOYEE DETAILS</u></h1><br><br>
+    <table class="table" style="width: 60%;color:white;background-color: black;" id="result">
+       
+   </table>
+   </center>
+
+
+</body>
+
+<script>
+    fetch("http://localhost:8000/empdisplay")
+    .then(async(e)=>{
+        console.log(e)
+        let a =await e.json()
+        console.log(a)
+        var temp = "<tr><th>empname</th><th>empage</th><th>empid</th><th>empsalary</th><tr>"
+        // if(a.length>0)
+        // {
+            for(let d of a)
+            {
+                temp+="<tr><td>"+d.empname+"</td><td>"+d.empage+"</td><td>"+d.empid+"</td><td>"+d.empsalary+"</td></tr>"
+            }
+        // }
+        // else{
+        //     temp+="No records found"
+        // }
+           document.getElementById("result").innerHTML=temp
+    })
+</script>
+</html>
+
+
